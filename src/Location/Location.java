@@ -1,5 +1,10 @@
 package Location;
 
+/*
+ * Mini-projet : Boutique de location
+ * Auteurs: Aurélio Hardy, Arthur Baron, Yoann Auffredo
+ */
+
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
@@ -21,18 +26,25 @@ public class Location {
 		this.prixJour = 0;
 	}
 	
+	
 	public void ajouterArticle(Article article){
 		articles.add(article);
 		prixJour += article.getPrixLocation();
 	}
 	
 	/**
-	 * If the article is in the list, remove it
+	 * If the article is in the list remove it and return true, 
+	 * else do nothing and return false
 	 * @param article
+	 * @return true if the article was removed, else false
 	 */
-	public void retirerArticle(Article article){
-		if(articles.remove(article))
+	public boolean retirerArticle(Article article){
+		if(articles.remove(article)){
 			prixJour -= article.getPrixLocation();
+			return true;
+		} else {
+			return false;
+		}	
 	}
 
 	
