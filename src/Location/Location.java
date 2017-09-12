@@ -26,14 +26,18 @@ public class Location {
 		this.prixJour = 0;
 	}
 	
-	
+	/**
+	 * Add the article to the leasing
+	 * @param article
+	 */
 	public void ajouterArticle(Article article){
 		articles.add(article);
 		prixJour += article.getPrixLocation();
+		article.setNbStock(article.getNbStock()-1);
 	}
 	
 	/**
-	 * If the article is in the list remove it and return true, 
+	 * If the article is in the leasing remove it and return true, 
 	 * else do nothing and return false
 	 * @param article
 	 * @return true if the article was removed, else false
@@ -41,12 +45,20 @@ public class Location {
 	public boolean retirerArticle(Article article){
 		if(articles.remove(article)){
 			prixJour -= article.getPrixLocation();
+			article.setNbStock(article.getNbStock()+1);
 			return true;
 		} else {
 			return false;
 		}	
 	}
 
+	/**
+	 * 
+	 * @param location
+	 */
+	public static void archiver(Location location){
+		
+	}
 	
 	
 	
