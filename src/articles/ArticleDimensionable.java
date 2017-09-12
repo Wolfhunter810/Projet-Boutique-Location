@@ -29,7 +29,7 @@ public abstract class ArticleDimensionable extends Article {
 	
 	/**
 	 * get the hight
-	 * @return hight
+	 * @return hight in cm
 	 */
 	public double getHauteur() {
 		return hauteur;
@@ -37,7 +37,7 @@ public abstract class ArticleDimensionable extends Article {
 	
 	/**
 	 * set the hight
-	 * @param hauteur
+	 * @param hauteur in cm
 	 */
 	public void setHauteur(double hauteur) {
 		this.hauteur = hauteur;
@@ -45,7 +45,7 @@ public abstract class ArticleDimensionable extends Article {
 	
 	/**
 	 * get the width
-	 * @return width
+	 * @return width in cm
 	 */
 	public double getLargeur() {
 		return largeur;
@@ -53,7 +53,7 @@ public abstract class ArticleDimensionable extends Article {
 	
 	/**
 	 * set the width
-	 * @param largeur
+	 * @param largeur in cm
 	 */
 	public void setLargeur(double largeur) {
 		this.largeur = largeur;
@@ -61,7 +61,7 @@ public abstract class ArticleDimensionable extends Article {
 	
 	/**
 	 * get the length
-	 * @return the length
+	 * @return the length in cm
 	 */
 	public double getLongueur() {
 		return longueur;
@@ -69,7 +69,7 @@ public abstract class ArticleDimensionable extends Article {
 	
 	/**
 	 * set the length
-	 * @param longueur
+	 * @param longueur in cm
 	 */
 	public void setLongueur(double longueur) {
 		this.longueur = longueur;
@@ -84,11 +84,19 @@ public abstract class ArticleDimensionable extends Article {
 	}
 
 	/**
-	 * set the maximum weight
+	 * set the maximum weight in kg
 	 * @param poidsMax
 	 */
 	public void setPoidsMax(double poidsMax) {
 		this.poidsMax = poidsMax;
 	}
 	
+	/**
+	 * Affiche les attributs des articles dimentionnables
+	 */
+	public void afficher(){
+		super.afficher();
+		System.out.println("Dimention :"+this.longueur+" x "+this.largeur+" x "+this.hauteur);
+		System.out.println("Poids maximum toléré : "+this.poidsMax);
+	}
 }

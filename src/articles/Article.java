@@ -82,7 +82,7 @@ public abstract class Article {
 	
 	/**
 	 * set the location price
-	 * @param prixLocation
+	 * @param prixLocation in Euro
 	 */
 	public void setPrixLocation(double prixLocation) {
 		this.prixLocation = prixLocation;
@@ -102,5 +102,13 @@ public abstract class Article {
 	 */
 	public void setNbStock(int nbStock) {
 		this.nbStock = nbStock;
+	}
+	
+	public void afficher(){
+		System.out.println("Attributs de la table "+ this.reference);
+		System.out.println("Marque : "+this.marque);
+		System.out.println("Modele : "+this.modele);
+		System.out.println("Prix de location : "+this.prixLocation+"€/jour");
+		System.out.println("Stock : "+this.nbStock);
 	}
 }

@@ -37,4 +37,13 @@ public class Matelas extends ArticleDimensionable{
 	public void setTempsGonflage(double tempsGonflage) {
 		this.tempsGonflage = tempsGonflage;
 	}
+
+	@Override
+	/**
+	 * Affiche les attributs des matelas
+	 */
+	public void afficher() {
+		super.afficher();
+		System.out.println("Temps de gonflage : "+this.tempsGonflage);
+	}
 }
