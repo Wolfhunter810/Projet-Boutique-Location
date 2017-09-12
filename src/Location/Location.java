@@ -80,5 +80,4 @@ public class Location {
 		this.client = client;
 	}
 	
-	
 }
