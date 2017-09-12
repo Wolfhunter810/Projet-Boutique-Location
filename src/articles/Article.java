@@ -1,5 +1,10 @@
 package articles;
 
+/*
+ * Mini-projet : Boutique de location
+ * Auteurs: Aurélio Hardy, Arthur Baron, Yoann Auffredo
+ */
+
 public abstract class Article {
 	protected String reference;
 	protected String marque;
@@ -74,7 +79,7 @@ public abstract class Article {
 	
 	/**
 	 * get the location price
-	 * @return the location price
+	 * @return the location price in Euro
 	 */
 	public double getPrixLocation() {
 		return prixLocation;
@@ -104,6 +109,9 @@ public abstract class Article {
 		this.nbStock = nbStock;
 	}
 	
+	/**
+	 * Affiche les attributs des articles
+	 */
 	public void afficher(){
 		System.out.println("Attributs de la table "+ this.reference);
 		System.out.println("Marque : "+this.marque);
