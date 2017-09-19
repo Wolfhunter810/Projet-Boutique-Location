@@ -1,7 +1,9 @@
 
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 import articles.*;
 
@@ -11,6 +13,19 @@ public class Application {
 	public static void main(String[] args){
 		init();
 		//Test.testArticlesTri();
+
+		
+		System.out.println("Bienvenue sur l'application de la société Aurélio Inc.");
+		System.out.println("Choisissez une action à effectuer");
+		System.out.println("1-afficher la liste des artciles");
+		System.out.println("2-créer une commande");
+		System.out.println("3-afficher les locations en cours");
+		System.out.println("4-calcul des recettes sur une période");
+		System.out.println("----------------------------------------");
+		
+		selectInt(5);
+		System.out.println("valid");
+					
 	}
 	
 	public static void init(){
@@ -36,6 +51,28 @@ public class Application {
 		articles.add(new Table("TA3", "MARQUE1", "MODELE6-L", 59.99, 20, 120, 100, 3.20, 350));
 		articles.add(new Table("TA4", "MARQUE1", "MODELE6-XL", 69.99, 20, 120, 100, 3.20, 450));
 		//FIN CREATION ARTICLES
+	}
+	
+	
+	public static int selectInt( int max){
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Entrez un nombre entre 1 et "+max);
+		int res = -1;
+		while (true) {
+		    while (!sc.hasNextInt()) {
+		        System.out.println("Erreur, entrez un NOMBRE entre 1 et "+max);
+		        sc.nextLine(); // Discard junk entries
+		    }
+		    res = sc.nextInt();
+		    if (res >= 1 && res <= max) {
+		        break;
+		    }
+		    System.out.println("nombre invalide, entrez un nombre entre 1 et "+max);
+		}
+		sc.close();
+		return res;
 	}
 	
 	/**
