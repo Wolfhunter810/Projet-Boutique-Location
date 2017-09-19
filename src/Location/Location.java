@@ -6,7 +6,12 @@ package Location;
  */
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.io.File;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import articles.Article;
 
@@ -54,12 +59,19 @@ public class Location {
 
 	/**
 	 * 
-	 * @param location
+	 * 
 	 */
-	public static void archiver(Location location){
-		
-	}
+	public void restituer(){
+		try {
+		String anneeFin = String.valueOf(this.getDate_fin().get(Calendar.YEAR));
+		String moisFin = String.valueOf(this.getDate_fin().get(Calendar.MONTH));
+		File file = new File(anneeFin+moisFin+".txt");
+		file.createNewFile();
 	
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	/*Getters-Setters*/
@@ -103,6 +115,5 @@ public class Location {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	
 	
 }
