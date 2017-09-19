@@ -23,8 +23,41 @@ public class Application {
 		System.out.println("4-calcul des recettes sur une période");
 		System.out.println("----------------------------------------");
 		
-		selectInt(5);
-		System.out.println("valid");
+		//demande à l'utilisateur un nombre de 1 à 4
+		int choixAction = selectInt(4);
+		
+		//les entrées sont filtrées donc pas de default case
+		switch(choixAction){
+		case 1:
+			System.out.println("Veuillez sélectionner un mode de tri : "
+					+ "1-reference, 2-marque, 3-modele, 4-prix");
+			System.out.println("----------------------------------------");
+			int choixTri = selectInt(4);
+			
+			switch(choixTri){
+			case 1:
+				System.out.println(tri("reference").toString());
+				break;
+			case 2:
+				System.out.println(tri("marque").toString());
+				break;
+			case 3:
+				System.out.println(tri("modele").toString());
+				break;
+			case 4:
+				System.out.println(tri("prix").toString());
+				break;
+			}
+			
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		}
+		
 					
 	}
 	
@@ -53,7 +86,11 @@ public class Application {
 		//FIN CREATION ARTICLES
 	}
 	
-	
+	/**
+	 * demande à l'utilisateur de choisir un nombre entre 1 et max
+	 * @param max 
+	 * @return le choix de l'utilisateur
+	 */
 	public static int selectInt( int max){
 		
 		Scanner sc = new Scanner(System.in);
@@ -63,7 +100,7 @@ public class Application {
 		while (true) {
 		    while (!sc.hasNextInt()) {
 		        System.out.println("Erreur, entrez un NOMBRE entre 1 et "+max);
-		        sc.nextLine(); // Discard junk entries
+		        sc.nextLine(); //si c'est pas un int on prend la ligne l'après
 		    }
 		    res = sc.nextInt();
 		    if (res >= 1 && res <= max) {
