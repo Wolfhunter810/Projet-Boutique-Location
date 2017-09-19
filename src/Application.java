@@ -1,5 +1,6 @@
-package Location;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 import articles.*;
@@ -9,9 +10,11 @@ public class Application {
 	
 	public static void main(String[] args){
 		init();
+		//Test.testArticlesTri();
 	}
 	
 	public static void init(){
+		articles = new ArrayList<Article>();
 		//CREATION ARTICLES
 		//Lits
 		articles.add(new Lit("LIT1","MARQUE1","MODELE1",5.99,3,40.0,70.0,200.,150.0));
@@ -44,23 +47,23 @@ public class Application {
 	 * @param modeTri
 	 * @return une liste d'article trié en fonction du paramètre d'entrée
 	 */
-	public List<Article> tri(String modeTri){
-		List<Article> articlesTrie = this.articles;
+	public static List<Article> tri(String modeTri){
+		List<Article> articlesTrie = articles;
 		switch(modeTri){
 		default:
 			System.out.println("Veuillez sélectionner un mode : reference, marque, modele, prix");
 			break;
 		case "reference":
-			articlesTrie.sort((a1, a2) -> a1.getReference().compareTo(a1.getReference()));
+			articlesTrie.sort((a1, a2) -> a1.getReference().compareTo(a2.getReference()));
 			break;
 		case "marque":
-			articlesTrie.sort((a1, a2) -> a1.getMarque().compareTo(a1.getMarque()));
+			articlesTrie.sort((a1, a2) -> a1.getMarque().compareTo(a2.getMarque()));
 			break;
 		case "modele":
-			articlesTrie.sort((a1, a2) -> a1.getModele().compareTo(a1.getModele()));
+			articlesTrie.sort((a1, a2) -> a1.getModele().compareTo(a2.getModele()));
 			break;
 		case "prix":
-			articlesTrie.sort((a1, a2) -> Double.compare(a1.getPrixLocation(), a1.getPrixLocation()));
+			articlesTrie.sort((a1, a2) -> Double.compare(a1.getPrixLocation(), a2.getPrixLocation()));
 			break;
 		}
 		return articlesTrie;
