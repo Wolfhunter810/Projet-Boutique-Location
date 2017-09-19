@@ -18,7 +18,7 @@ public class Application {
 	
 	public static void main(String[] args){
 		init();
-		Test.testClientTri();
+		//Test.testClientTri();
 		//Test.testArticlesTri();
 
 		
@@ -60,7 +60,6 @@ public class Application {
 		articles.add(new Table("TA2", "MARQUE1", "MODELE6-M", 49.99, 20, 120, 100, 3.20, 250));
 		articles.add(new Table("TA3", "MARQUE1", "MODELE6-L", 59.99, 20, 120, 100, 3.20, 350));
 		articles.add(new Table("TA4", "MARQUE1", "MODELE6-XL", 69.99, 20, 120, 100, 3.20, 450));
-		System.out.println(articles.size() +" articles initialisés");
 		//FIN CREATION ARTICLES
 		
 		//CREATION LOCATION
@@ -89,8 +88,6 @@ public class Application {
 		l.ajouterArticle(articles.get(7));
 		l.ajouterArticle(articles.get(3));
 		locations.add(l);
-		
-		System.out.println(locations.size() +" locations initialisés");
 		//FIN CREATION LOCATION
 	}
 	
