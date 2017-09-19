@@ -1,5 +1,10 @@
 package articles;
 
+/*
+ * Mini-projet : Boutique de location
+ * Auteurs: Aurélio Hardy, Arthur Baron, Yoann Auffredo
+ */
+
 public abstract class ArticleDimensionable extends Article {
 	protected double hauteur;
 	protected double largeur;
@@ -96,7 +101,7 @@ public abstract class ArticleDimensionable extends Article {
 	 */
 	public void afficher(){
 		super.afficher();
-		System.out.println("Dimention :"+this.longueur+" x "+this.largeur+" x "+this.hauteur);
-		System.out.println("Poids maximum toléré : "+this.poidsMax);
+		System.out.println("Dimention :"+this.longueur+" x "+this.largeur+" x "+this.hauteur +" cm");
+		System.out.println("Poids maximum toléré : "+this.poidsMax +"kg");
 	}
 }

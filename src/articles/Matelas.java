@@ -1,5 +1,10 @@
 package articles;
 
+/*
+ * Mini-projet : Boutique de location
+ * Auteurs: Aurélio Hardy, Arthur Baron, Yoann Auffredo
+ */
+
 public class Matelas extends ArticleDimensionable{
 	private double tempsGonflage;
 	

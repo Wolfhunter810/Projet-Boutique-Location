@@ -1,5 +1,10 @@
 package articles;
 
+/*
+ * Mini-projet : Boutique de location
+ * Auteurs: Aurélio Hardy, Arthur Baron, Yoann Auffredo
+ */
+
 public class Table extends ArticleDimensionable{
 	/**
 	 * Constructor
@@ -23,7 +28,6 @@ public class Table extends ArticleDimensionable{
 	 * Affiche les attributs des tables
 	 */
 	public void afficher() {
-		// TODO Auto-generated method stub
-		
+		super.afficher();
 	}
 }
