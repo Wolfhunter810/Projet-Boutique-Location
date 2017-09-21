@@ -15,6 +15,7 @@ import articles.*;
 public class Application {
 	public static List<Article> articles;
 	public static List<Location> locations;
+	public static List<Client> clients;
 	
 	public static void main(String[] args){
 		init();
@@ -37,29 +38,61 @@ public class Application {
 		switch(choixAction){
 		case 1:
 			System.out.println("Veuillez sélectionner un mode de tri : "
-					+ "1-reference, 2-marque, 3-modele, 4-prix");
+					+ "1[reference], 2[marque], 3[modele], 4[prix]");
 			System.out.println("----------------------------------------");
 			int choixTri = selectInt(4);
-			
+			List<Article> lstArticles;
 			switch(choixTri){
 			case 1:
-				System.out.println(tri("reference").toString());
+				lstArticles = tri("reference");
+				for(Article a : lstArticles){
+					a.afficher();
+				}
 				break;
 			case 2:
-				System.out.println(tri("marque").toString());
+				lstArticles = tri("marque");
+				for(Article a : lstArticles){
+					a.afficher();
+				}
 				break;
 			case 3:
-				System.out.println(tri("modele").toString());
+				lstArticles = tri("modele");
+				for(Article a : lstArticles){
+					a.afficher();
+				}
 				break;
 			case 4:
-				System.out.println(tri("prix").toString());
+				lstArticles = tri("prix");
+				for(Article a : lstArticles){
+					a.afficher();
+				}
+				break;
+			default:
+				System.out.println("Veuillez sélectionner un mode valide : 1[reference], 2[marque], 3[modele], 4[prix]");
 				break;
 			}
-			
 			break;
 		case 2:
 			break;
 		case 3:
+			System.out.println("Veuillez sélectionner un client parmi la liste : ");
+			for(Client c : clients){
+				System.out.println(c.getId()+"["+c.getPrenom()+" "+c.getNom()+"]");
+			}
+			System.out.println("----------------------------------------");
+			boolean repeat = true;
+			while(repeat) {
+				int choixClient = selectInt(99999);
+				List<Location>lstLocationsTrie = getLocationsByClient(choixClient);
+				if(lstLocationsTrie.size()==0){
+					System.out.println("Aucune location trouvée pour l'ID "+choixClient);
+				}else{
+					for(Location l : lstLocationsTrie){
+						l.afficher();
+					}
+					repeat = false;
+				}
+			}
 			break;
 		case 4:
 			break;
@@ -73,6 +106,7 @@ public class Application {
 	public static void init(){
 		articles = new ArrayList<Article>();
 		locations = new ArrayList<Location>();
+		clients = new ArrayList<Client>();
 		//CREATION ARTICLES
 		//Lits
 		articles.add(new Lit("LIT1","MARQUE1","MODELE1",5.99,3,40.0,70.0,200.,150.0));
@@ -97,18 +131,19 @@ public class Application {
 		
 		//CREATION LOCATION
 		Client c = new Client(1, "Baron", "Arthur", "12 rue du chemin", 673920483);
+		clients.add(c);
 		Location l = new Location(c, new GregorianCalendar(2017,9,01), new GregorianCalendar(2017,10,01));
 		l.ajouterArticle(articles.get(4));
 		l.ajouterArticle(articles.get(1));
 		locations.add(l);
 		
-		c = new Client(1, "Baron", "Arthur", "12 rue du chemin", 673920483);
 		l = new Location(c, new GregorianCalendar(2017,9,01), new GregorianCalendar(2017,10,01));
 		l.ajouterArticle(articles.get(8));
 		l.ajouterArticle(articles.get(8));
 		locations.add(l);
 		
 		c = new Client(2, "Auffredo", "Yoann", "13 rue du chemin", 649302812);
+		clients.add(c);
 		l = new Location(c, new GregorianCalendar(2017,8,18), new GregorianCalendar(2017,10,18));
 		l.ajouterArticle(articles.get(2));
 		l.ajouterArticle(articles.get(5));
@@ -116,38 +151,13 @@ public class Application {
 		locations.add(l);
 		
 		c = new Client(3, "Hardy", "Aurelio", "14 rue du chemin", 738209839);
+		clients.add(c);
 		l = new Location(c, new GregorianCalendar(2017,4,04), new GregorianCalendar(2017,8,04));
 		l.ajouterArticle(articles.get(6));
 		l.ajouterArticle(articles.get(7));
 		l.ajouterArticle(articles.get(3));
 		locations.add(l);
 		//FIN CREATION LOCATION
-	}
-	
-	/**
-	 * demande à l'utilisateur de choisir un nombre entre 1 et max
-	 * @param max 
-	 * @return le choix de l'utilisateur
-	 */
-	public static int selectInt( int max){
-		
-		Scanner sc = new Scanner(System.in);
-		
-		System.out.println("Entrez un nombre entre 1 et "+max);
-		int res = -1;
-		while (true) {
-		    while (!sc.hasNextInt()) {
-		        System.out.println("Erreur, entrez un NOMBRE entre 1 et "+max);
-		        sc.nextLine(); //si c'est pas un int on prend la ligne l'après
-		    }
-		    res = sc.nextInt();
-		    if (res >= 1 && res <= max) {
-		        break;
-		    }
-		    System.out.println("nombre invalide, entrez un nombre entre 1 et "+max);
-		}
-		sc.close();
-		return res;
 	}
 	
 	/**
@@ -173,9 +183,6 @@ public class Application {
 			break;
 		case "prix":
 			articlesTrie.sort((a1, a2) -> Double.compare(a1.getPrixLocation(), a2.getPrixLocation()));
-			break;
-		default:
-			System.out.println("Veuillez sélectionner un mode valide : [reference], [marque], [modele], [prix]");
 			break;
 		}
 		return articlesTrie;
