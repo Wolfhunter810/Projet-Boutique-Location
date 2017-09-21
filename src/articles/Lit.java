@@ -27,7 +27,7 @@ public class Lit extends ArticleDimensionable{
 	/**
 	 * Affiche les attributs des lits médicalisés
 	 */
-	public void afficher() {
-		super.afficher();
+	public String toString() {
+		return(super.toString());
 	}
 }

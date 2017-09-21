@@ -47,8 +47,7 @@ public class Matelas extends ArticleDimensionable{
 	/**
 	 * Affiche les attributs des matelas
 	 */
-	public void afficher() {
-		super.afficher();
-		System.out.println("Temps de gonflage : "+this.tempsGonflage);
+	public String toString() {
+		return(super.toString()+"Temps de gonflage : "+this.tempsGonflage);
 	}
 }

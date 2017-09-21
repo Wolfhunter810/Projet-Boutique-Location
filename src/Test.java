@@ -54,7 +54,7 @@ public class Test {
 		List<Location>lstLocations = Application.locations;
 		List<Location>lstLocationsTrie = Application.getLocationsByClient(1);
 		for(Location l : lstLocationsTrie){
-			l.afficher();
+			System.out.println(l.toString());
 		}
 		
 	}
