@@ -15,6 +15,7 @@ import articles.*;
 public class Application {
 	public static List<Article> articles;
 	public static List<Location> locations;
+	private static Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args){
 		init();
@@ -133,9 +134,7 @@ public class Application {
 	 * @return le choix de l'utilisateur
 	 */
 	public static int selectInt( int max){
-		
-		Scanner sc = new Scanner(System.in);
-		
+		//sc.next();
 		System.out.println("Entrez un nombre entre 1 et "+max);
 		int res = -1;
 		while (true) {
@@ -149,7 +148,6 @@ public class Application {
 		    }
 		    System.out.println("nombre invalide, entrez un nombre entre 1 et "+max);
 		}
-		sc.close();
 		return res;
 	}
 	
