@@ -16,6 +16,7 @@ public class Application {
 	public static List<Article> articles;
 	public static List<Location> locations;
 	public static List<Client> clients;
+	private static Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args){
 		init();
@@ -158,6 +159,29 @@ public class Application {
 		l.ajouterArticle(articles.get(3));
 		locations.add(l);
 		//FIN CREATION LOCATION
+	}
+	
+	/**
+	 * demande à l'utilisateur de choisir un nombre entre 1 et max
+	 * @param max 
+	 * @return le choix de l'utilisateur
+	 */
+	public static int selectInt( int max){
+		//sc.next();
+		System.out.println("Entrez un nombre entre 1 et "+max);
+		int res = -1;
+		while (true) {
+		    while (!sc.hasNextInt()) {
+		        System.out.println("Erreur, entrez un NOMBRE entre 1 et "+max);
+		        sc.nextLine(); //si c'est pas un int on prend la ligne l'après
+		    }
+		    res = sc.nextInt();
+		    if (res >= 1 && res <= max) {
+		        break;
+		    }
+		    System.out.println("nombre invalide, entrez un nombre entre 1 et "+max);
+		}
+		return res;
 	}
 	
 	/**
