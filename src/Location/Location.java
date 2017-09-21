@@ -126,4 +126,16 @@ public class Location {
 		this.client = client;
 	}
 	
+	public void afficher(){
+		System.out.println("Location de "+this.articles.size()+
+				" articles à "+this.client.getPrenom()+
+				" "+this.client.getNom()+
+				" du "+this.date_debut.get(GregorianCalendar.DAY_OF_MONTH)+"/" + 
+				this.date_debut.get(GregorianCalendar.MONTH) + "/" + 
+				this.date_debut.get(GregorianCalendar.YEAR)+
+				" au "+ this.date_fin.get(GregorianCalendar.DAY_OF_MONTH)+"/" + 
+				this.date_fin.get(GregorianCalendar.MONTH) + "/" + 
+				this.date_fin.get(GregorianCalendar.YEAR)+
+				" pour un montant de "+this.prixJour);
+	}
 }

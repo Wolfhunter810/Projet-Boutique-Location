@@ -1,19 +1,37 @@
 package Location;
 
 public class Client {
+	private int id;
 	private String nom;
 	private String prenom;
 	private String adresse;
 	private int tel;
 	
-	public Client(String nom, String prenom, String adresse, int tel) {
+	public Client(int id, String nom, String prenom, String adresse, int tel) {
 		super();
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
 		this.tel = tel;
 	}
 	
+	/**
+	 * return the client id
+	 * @return id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * Set the client id
+	 * @param id
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	/**
 	 * Returns the client's name
 	 * @return nom
