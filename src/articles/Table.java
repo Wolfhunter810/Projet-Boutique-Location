@@ -27,7 +27,7 @@ public class Table extends ArticleDimensionable{
 	/**
 	 * Affiche les attributs des tables
 	 */
-	public void afficher() {
-		super.afficher();
+	public String toString() {
+		return(super.toString());
 	}
 }

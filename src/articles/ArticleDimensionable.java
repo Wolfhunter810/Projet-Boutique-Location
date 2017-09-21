@@ -99,9 +99,7 @@ public abstract class ArticleDimensionable extends Article {
 	/**
 	 * Affiche les attributs des articles dimentionnables
 	 */
-	public void afficher(){
-		super.afficher();
-		System.out.println("Dimention :"+this.longueur+" x "+this.largeur+" x "+this.hauteur +" cm");
-		System.out.println("Poids maximum toléré : "+this.poidsMax +"kg");
+	public String toString(){
+		return (super.toString()+" - Dimention:"+this.longueur+" x "+this.largeur+" x "+this.hauteur +" cm - Poids max: "+this.poidsMax +"kg");
 	}
 }

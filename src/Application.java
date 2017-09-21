@@ -42,31 +42,19 @@ public class Application {
 					+ "1[reference], 2[marque], 3[modele], 4[prix]");
 			System.out.println("----------------------------------------");
 			int choixTri = selectInt(4);
-			List<Article> lstArticles;
 			switch(choixTri){
 			case 1:
-				lstArticles = tri("reference");
-				for(Article a : lstArticles){
-					a.afficher();
-				}
+				//Le replace sert à sauter les lignes entre chaque élément de la liste
+				System.out.println(tri("reference").toString().replaceAll(",", "\n"));
 				break;
 			case 2:
-				lstArticles = tri("marque");
-				for(Article a : lstArticles){
-					a.afficher();
-				}
+				System.out.println(tri("marque").toString().replaceAll(",", "\n"));
 				break;
 			case 3:
-				lstArticles = tri("modele");
-				for(Article a : lstArticles){
-					a.afficher();
-				}
+				System.out.println(tri("modele").toString().replaceAll(",", "\n"));
 				break;
 			case 4:
-				lstArticles = tri("prix");
-				for(Article a : lstArticles){
-					a.afficher();
-				}
+				System.out.println(tri("prix").toString().replaceAll(",", "\n"));
 				break;
 			default:
 				System.out.println("Veuillez sélectionner un mode valide : 1[reference], 2[marque], 3[modele], 4[prix]");
@@ -77,20 +65,20 @@ public class Application {
 			break;
 		case 3:
 			System.out.println("Veuillez sélectionner un client parmi la liste : ");
+			int index = 1;
 			for(Client c : clients){
-				System.out.println(c.getId()+"["+c.getPrenom()+" "+c.getNom()+"]");
+				System.out.println(index+"["+c.getPrenom()+" "+c.getNom()+"]");
+				index++;
 			}
 			System.out.println("----------------------------------------");
 			boolean repeat = true;
 			while(repeat) {
-				int choixClient = selectInt(99999);
-				List<Location>lstLocationsTrie = getLocationsByClient(choixClient);
+				int choixClient = selectInt(clients.size());
+				List<Location>lstLocationsTrie = getLocationsByClient(choixClient-1);
 				if(lstLocationsTrie.size()==0){
 					System.out.println("Aucune location trouvée pour l'ID "+choixClient);
 				}else{
-					for(Location l : lstLocationsTrie){
-						l.afficher();
-					}
+					System.out.println(lstLocationsTrie.toString().replaceAll(",", "\n"));
 					repeat = false;
 				}
 			}
@@ -217,7 +205,8 @@ public class Application {
 	 * @param id
 	 * @return une liste de locations qui correspondent à l'id du client sélectionné
 	 */
-	public static List<Location> getLocationsByClient(int id){
+	public static List<Location> getLocationsByClient(int index){
+		int id = clients.get(index).getId();
 		List<Location> lstLocationsTrie = new ArrayList<Location>();
 		for(Location l : locations){
 			if(l.getClient().getId()==id){

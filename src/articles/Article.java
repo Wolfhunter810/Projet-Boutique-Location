@@ -112,11 +112,7 @@ public abstract class Article {
 	/**
 	 * Affiche les attributs des articles
 	 */
-	public void afficher(){
-		System.out.println("Attributs de la table "+ this.reference);
-		System.out.println("Marque : "+this.marque);
-		System.out.println("Modele : "+this.modele);
-		System.out.println("Prix de location : "+this.prixLocation+"€/jour");
-		System.out.println("Stock : "+this.nbStock);
+	public String toString(){
+		return "ref: "+ this.reference+" - Marque : "+this.marque +" - Modele : "+this.modele+" - Prix: "+this.prixLocation+"€/jour - Stock : "+this.nbStock;
 	}
 }

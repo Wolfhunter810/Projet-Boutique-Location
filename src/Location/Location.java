@@ -126,8 +126,8 @@ public class Location {
 		this.client = client;
 	}
 	
-	public void afficher(){
-		System.out.println("Location de "+this.articles.size()+
+	public String toString(){
+		return("Location de "+this.articles.size()+
 				" articles à "+this.client.getPrenom()+
 				" "+this.client.getNom()+
 				" du "+this.date_debut.get(GregorianCalendar.DAY_OF_MONTH)+"/" + 
