@@ -5,7 +5,6 @@
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,81 +21,91 @@ public class Application {
 		init();
 		//Test.testClientTri();
 		//Test.testArticlesTri();
-
+		boolean continuer = true;
 		
-		System.out.println("Bienvenue sur l'application de la société Aurélio Inc.");
-		System.out.println("Choisissez une action à effectuer");
-		System.out.println("1-afficher la liste des artciles");
-		System.out.println("2-créer une commande");
-		System.out.println("3-afficher les locations en cours");
-		System.out.println("4-calcul des recettes sur une période");
-		System.out.println("----------------------------------------");
-		
-		//demande à l'utilisateur un nombre de 1 à 4
-		int choixAction = selectInt(4);
-		
-		//les entrées sont filtrées donc pas de default case
-		switch(choixAction){
-		case 1:
-			System.out.println("Veuillez sélectionner un mode de tri : "
-					+ "1[reference], 2[marque], 3[modele], 4[prix]");
+		while(continuer){
+	
+			System.out.println("Bienvenue sur l'application de la société Aurélio Inc.");
+			System.out.println("Choisissez une action à effectuer");
+			System.out.println("1-afficher la liste des artciles");
+			System.out.println("2-créer une commande");
+			System.out.println("3-afficher les locations en cours");
+			System.out.println("4-calcul des recettes sur une période");
+			System.out.println("5- ***exit***");
 			System.out.println("----------------------------------------");
-			int choixTri = selectInt(4);
-			List<Article> lstArticles;
-			switch(choixTri){
+			
+			//demande à l'utilisateur un nombre de 1 à 5
+			int choixAction = selectInt(5);
+			
+			//les entrées sont filtrées donc pas de default case
+			switch(choixAction){
 			case 1:
-				lstArticles = tri("reference");
-				for(Article a : lstArticles){
-					a.afficher();
+				System.out.println("Veuillez sélectionner un mode de tri : "
+						+ "1[reference], 2[marque], 3[modele], 4[prix]");
+				System.out.println("----------------------------------------");
+				int choixTri = selectInt(4);
+				List<Article> lstArticles;
+				switch(choixTri){
+				case 1:
+					lstArticles = tri("reference");
+					for(Article a : lstArticles){
+						a.afficher();
+					}
+					break;
+				case 2:
+					lstArticles = tri("marque");
+					for(Article a : lstArticles){
+						a.afficher();
+					}
+					break;
+				case 3:
+					lstArticles = tri("modele");
+					for(Article a : lstArticles){
+						a.afficher();
+					}
+					break;
+				case 4:
+					lstArticles = tri("prix");
+					for(Article a : lstArticles){
+						a.afficher();
+					}
+					break;
+				default:
+					System.out.println("Veuillez sélectionner un mode valide : 1[reference], 2[marque], 3[modele], 4[prix]");
+					break;
 				}
 				break;
 			case 2:
-				lstArticles = tri("marque");
-				for(Article a : lstArticles){
-					a.afficher();
-				}
 				break;
 			case 3:
-				lstArticles = tri("modele");
-				for(Article a : lstArticles){
-					a.afficher();
+				System.out.println("Veuillez sélectionner un client parmi la liste : ");
+				for(Client c : clients){
+					System.out.println(c.getId()+"["+c.getPrenom()+" "+c.getNom()+"]");
+				}
+				System.out.println("----------------------------------------");
+				boolean repeat = true;
+				while(repeat) {
+					int choixClient = selectInt(99999);
+					List<Location>lstLocationsTrie = getLocationsByClient(choixClient);
+					if(lstLocationsTrie.size()==0){
+						System.out.println("Aucune location trouvée pour l'ID "+choixClient);
+					}else{
+						for(Location l : lstLocationsTrie){
+							l.afficher();
+						}
+						repeat = false;
+					}
 				}
 				break;
 			case 4:
-				lstArticles = tri("prix");
-				for(Article a : lstArticles){
-					a.afficher();
-				}
+				//get les fichiers de cette période
+				//get les locations qui correspondent à la bonne période
+				//get location.prixTotal et additionner le tout
 				break;
-			default:
-				System.out.println("Veuillez sélectionner un mode valide : 1[reference], 2[marque], 3[modele], 4[prix]");
+			case 5:
+				continuer = false;
 				break;
 			}
-			break;
-		case 2:
-			break;
-		case 3:
-			System.out.println("Veuillez sélectionner un client parmi la liste : ");
-			for(Client c : clients){
-				System.out.println(c.getId()+"["+c.getPrenom()+" "+c.getNom()+"]");
-			}
-			System.out.println("----------------------------------------");
-			boolean repeat = true;
-			while(repeat) {
-				int choixClient = selectInt(99999);
-				List<Location>lstLocationsTrie = getLocationsByClient(choixClient);
-				if(lstLocationsTrie.size()==0){
-					System.out.println("Aucune location trouvée pour l'ID "+choixClient);
-				}else{
-					for(Location l : lstLocationsTrie){
-						l.afficher();
-					}
-					repeat = false;
-				}
-			}
-			break;
-		case 4:
-			break;
 		}
 		
 	}
@@ -173,7 +182,7 @@ public class Application {
 		while (true) {
 		    while (!sc.hasNextInt()) {
 		        System.out.println("Erreur, entrez un NOMBRE entre 1 et "+max);
-		        sc.nextLine(); //si c'est pas un int on prend la ligne l'après
+		        sc.nextLine(); //si c'est pas un int on va à la ligne l'après
 		    }
 		    res = sc.nextInt();
 		    if (res >= 1 && res <= max) {
