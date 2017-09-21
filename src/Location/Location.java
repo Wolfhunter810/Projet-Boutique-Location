@@ -65,9 +65,19 @@ public class Location {
 		try {
 		String anneeFin = String.valueOf(this.getDate_fin().get(Calendar.YEAR));
 		String moisFin = String.valueOf(this.getDate_fin().get(Calendar.MONTH));
-		File file = new File(anneeFin+moisFin+".txt");
-		file.createNewFile();
-	
+		File file = new File("files/"+anneeFin+moisFin+".loc.txt");
+		if(!file.exists()) {
+			file.createNewFile();
+		}
+		FileWriter fw = new FileWriter(file);
+		BufferedWriter bw = new BufferedWriter(fw);
+		bw.write("Client : "+this.getClient().getNom()+" "+this.getClient().getPrenom());
+		bw.flush();
+		bw.write("Restitution : "+String.valueOf(this.getDate_fin().get(Calendar.DAY_OF_MONTH))+"/"+String.valueOf(this.getDate_fin().get(Calendar.MONTH))+"/"+String.valueOf(this.getDate_fin().get(Calendar.YEAR)));
+		bw.flush();
+		for(Article art : this.getArticles()) {
+			bw.write(art.getClass().toString()+" "+art.getReference());
+		}
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
