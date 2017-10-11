@@ -8,6 +8,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 import Location.*;
 import articles.*;
 
@@ -39,6 +41,7 @@ public class Application {
 			
 			//les entrées sont filtrées donc pas de default case
 			switch(choixAction){
+			//1-afficher la liste des artciles
 			case 1:
 				System.out.println("Veuillez sélectionner un mode de tri : "
 						+ "1[reference], 2[marque], 3[modele], 4[prix]");
@@ -61,8 +64,31 @@ public class Application {
 					break;
 				}
 				break;
+			
+			//2-créer une commande
 			case 2:
+				/*TODO*/
+				/*TODO*/
+				System.out.println("Vous allez saisir votre commande : ");
+				System.out.println("Veuillez rentrer le nom du client");
+				//String client = ;
+				System.out.println("Veuillez rentrer la date de début de location");
+				//String date_d = ;
+				//convert to georgian calender
+				System.out.println("Veuillez rentrer la date de fin de location");
+				//String date_f = ;
+				//convert to georgian calender
+				
+				//Location loc = new Location()
+				/*while(in != -1){
+					System.out.println("Veuillez ajouter un article à la commande en saisissant sa référence (taper -1 pour finir)");
+					loc.ajouterArticle(?)
+				}*/
+				/*TODO*/
+				/*TODO*/
 				break;
+				
+			//3-afficher les locations en cours
 			case 3:
 				System.out.println("Veuillez sélectionner un client parmi la liste : ");
 				int index = 1;
@@ -83,6 +109,8 @@ public class Application {
 					}
 				}
 				break;
+				
+			//4-calcul des recettes sur une période
 			case 4:
 				break;
 			case 5:
