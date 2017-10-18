@@ -95,5 +95,13 @@ public class Client {
 	public void setTel(int tel) {
 		this.tel = tel;
 	}
+
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
+	}
+	
+	
+	
 	
 }

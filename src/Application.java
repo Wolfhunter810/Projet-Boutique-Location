@@ -67,25 +67,89 @@ public class Application {
 			
 			//2-créer une commande
 			case 2:
-				/*TODO*/
-				/*TODO*/
 				System.out.println("Vous allez saisir votre commande : ");
-				System.out.println("Veuillez rentrer le nom du client");
-				//String client = ;
-				System.out.println("Veuillez rentrer la date de début de location");
-				//String date_d = ;
-				//convert to georgian calender
-				System.out.println("Veuillez rentrer la date de fin de location");
-				//String date_f = ;
-				//convert to georgian calender
+				System.out.println(clients);
 				
-				//Location loc = new Location()
-				/*while(in != -1){
+				int maxId=0;
+				for(Client c: clients){
+					maxId =Math.max(maxId, c.getId());
+				}
+				boolean clientOk = false;
+				
+				//pour eviter le client not defined
+				Client client = null;
+				
+				while(!clientOk){
+					System.out.println("Veuillez rentrer l'id du client");
+
+					int clientId = selectInt(maxId);
+					for(Client c: clients){
+						if(c.getId() == clientId){
+							clientOk=true;
+							client = c;
+						}
+					}
+				}
+
+				String date_d;
+				do{
+					System.out.println("Veuillez rentrer la date de début de location (JJ/MM/AAAA)");
+					date_d= sc.nextLine();
+				}while(!date_d.matches("^\\d{2}/\\d{2}/\\d{4}$"));
+				
+				String[] date_dTab = date_d.split("/");
+				GregorianCalendar calendarD = new GregorianCalendar(
+						Integer.parseInt(date_dTab[2]), Integer.parseInt(date_dTab[1]),
+						Integer.parseInt(date_dTab[0]));
+				
+				//convert to georgian calender
+				String date_f;
+				do{
+					System.out.println("Veuillez rentrer la date de fin de location (JJ/MM/AAAA)");
+					 date_f = sc.nextLine();
+				}while(!date_f.matches("^\\d{2}/\\d{2}/\\d{4}$"));
+				
+				String[] date_fTab = date_d.split("/");
+				GregorianCalendar calendarF = new GregorianCalendar(
+						Integer.parseInt(date_fTab[2]), Integer.parseInt(date_fTab[1]),
+						Integer.parseInt(date_fTab[0]));
+				Location loc = new Location(client,  calendarD , calendarF);
+	
+				System.out.println("Liste des articles : \n");
+				System.out.println(articles);
+				
+				String ref ;
+				Article art = null;
+				do {
+					art=null;
 					System.out.println("Veuillez ajouter un article à la commande en saisissant sa référence (taper -1 pour finir)");
-					loc.ajouterArticle(?)
-				}*/
-				/*TODO*/
-				/*TODO*/
+					ref = sc.nextLine();
+					if(ref.equals("-1"))
+						break;
+					
+					System.out.println(ref);
+					for(Article a: articles){
+						//System.out.println(a.getReference());
+						
+						if(a.getReference().equals(ref))
+							art = a;
+						//System.out.println(art);
+					}
+					if(art != null){
+						loc.ajouterArticle(art);
+						System.out.println("article ajouté");
+					} else
+						System.out.println("la référence saisie n'existe pas");
+					
+				}while(ref != "-1");
+				
+				if(loc.getArticles().isEmpty()){
+					System.out.println("commande sans articles, commande supprimée");
+				} else {
+					locations.add(loc);
+					System.out.println("fin de commande");
+				}
+				
 				break;
 				
 			//3-afficher les locations en cours
