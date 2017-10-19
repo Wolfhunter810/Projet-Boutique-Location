@@ -17,7 +17,7 @@ public class Client {
 	}
 	
 	/**
-	 * return the client id
+	 * return id client
 	 * @return id
 	 */
 	public int getId() {
@@ -25,7 +25,7 @@ public class Client {
 	}
 
 	/**
-	 * Set the client id
+	 * Set id client 
 	 * @param id
 	 */
 	public void setId(int id) {
@@ -33,64 +33,64 @@ public class Client {
 	}
 
 	/**
-	 * Returns the client's name
-	 * @return nom
+	 * get le nom du client
+	 * @return nom du client
 	 */
 	public String getNom() {
 		return nom;
 	}
 	
 	/**
-	 * Sets the client's name
-	 * @param nom
+	 * Set nom du client
+	 * @param nom du client
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 	
 	/**
-	 * Returns the client's first name
-	 * @return prenom
+	 * get le prenom du client
+	 * @return le prenom du client
 	 */
 	public String getPrenom() {
 		return prenom;
 	}
 	
 	/**
-	 * Sets the client's first name
-	 * @param prenom
+	 * Set le prenom du client
+	 * @param le prenom du client
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 
 	/**
-	 * Returns the client's address
-	 * @return adresse
+	 * get l'adresse du client
+	 * @return l'adresse du client
 	 */
 	public String getAdresse() {
 		return adresse;
 	}
 	
 	/**
-	 * Sets the client's address
-	 * @param adresse
+	 * Set l'adresse du client
+	 * @param l'adresse du client
 	 */
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
 
 	/**
-	 * Returns the client's phone number
-	 * @return tel
+	 * get le numero de telephone du client
+	 * @return le numero de telephone du client
 	 */
 	public int getTel() {
 		return tel;
 	}
 
 	/**
-	 * Sets the client's phone number
-	 * @param tel
+	 * Set le numero de telephone du client
+	 * @param le numero de telephone du client
 	 */
 	public void setTel(int tel) {
 		this.tel = tel;

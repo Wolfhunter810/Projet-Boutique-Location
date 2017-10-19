@@ -35,32 +35,32 @@ public class SouleveMalade extends Article {
 	}
 
 	/**
-	 * get maximum weight you can lift
-	 * @return maximum weight you can lift in kg
+	 * get la capacité de levage en kg
+	 * @return la capacité de levage
 	 */
 	public double getCapaciteLevage() {
 		return capaciteLevage;
 	}
 
 	/**
-	 * set maximum weight you can lift
-	 * @param maximum weight you can lift in kg
+	 * set la capacité de levage en g
+	 * @param la capacité de levage en kg
 	 */
 	public void setCapaciteLevage(double capaciteLevage) {
 		this.capaciteLevage = capaciteLevage;
 	}
 
 	/**
-	 * get angle of rotation
-	 * @return angle of rotation in degree
+	 * get le degre de pivotage
+	 * @return le degre de pivotage
 	 */
 	public double getDegrePivotage() {
 		return degrePivotage;
 	}
 
 	/**
-	 * set angle of rotation
-	 * @param angle of rotation in degree
+	 * set le degre de pivotage
+	 * @param le degre de pivotage
 	 */
 	public void setDegrePivotage(double degrePivotage) {
 		this.degrePivotage = degrePivotage;

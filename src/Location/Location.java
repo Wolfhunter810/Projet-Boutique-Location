@@ -32,20 +32,25 @@ public class Location {
 	}
 	
 	/**
-	 * Add the article to the leasing
+	 * ajout d'un article à la commande si le stock le permet
 	 * @param article
+	 * @return vrai si l'article est ajouté
 	 */
-	public void ajouterArticle(Article article){
-		articles.add(article);
-		prixJour += article.getPrixLocation();
-		article.setNbStock(article.getNbStock()-1);
+	public boolean ajouterArticle(Article article){
+		if(article.getNbStock()>0){
+			articles.add(article);
+			prixJour += article.getPrixLocation();
+			article.setNbStock(article.getNbStock()-1);
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/**
-	 * If the article is in the leasing remove it and return true, 
-	 * else do nothing and return false
+	 * si l'article est dans la commande, le retire
 	 * @param article
-	 * @return true if the article was removed, else false
+	 * @return vrai si l'article est retiré
 	 */
 	public boolean retirerArticle(Article article){
 		if(articles.remove(article)){
