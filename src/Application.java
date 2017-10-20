@@ -4,6 +4,7 @@
  */
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Scanner;
@@ -27,17 +28,18 @@ public class Application {
 		
 		while(continuer){
 	
-			System.out.println("Bienvenue sur l'application de la sociÃ©tÃ© AurÃ©lio Inc.");
-			System.out.println("Choisissez une action Ã  effectuer");
-			System.out.println("1-afficher la liste des artciles");
-			System.out.println("2-crÃ©er une commande");
+			System.out.println("Bienvenue sur l'application de la société Aurélio Inc.");
+			System.out.println("Choisissez une action à effectuer");
+			System.out.println("1-afficher la liste des articles");
+			System.out.println("2-créer une commande");
 			System.out.println("3-afficher les locations en cours");
-			System.out.println("4-calcul des recettes sur une pÃ©riode");
-			System.out.println("5- ***exit***");
+			System.out.println("4-calcul des recettes sur une période");
+			System.out.println("5-restituer une location");
+			System.out.println("6- ***exit***");
 			System.out.println("----------------------------------------");
 
 			//demande Ã  l'utilisateur un nombre de 1 Ã  5
-			int choixAction = selectInt(5);
+			int choixAction = selectInt(6);
 			
 			//les entrÃ©es sont filtrÃ©es donc pas de default case
 			switch(choixAction){
@@ -154,7 +156,7 @@ public class Application {
 				
 			//3-afficher les locations en cours
 			case 3:
-				System.out.println("Veuillez sÃ©lectionner un client parmi la liste : ");
+				System.out.println("Veuillez sélectionner un client parmi la liste : ");
 				int index = 1;
 				for(Client c : clients){
 					System.out.println(index+"["+c.getPrenom()+" "+c.getNom()+"]");
@@ -176,8 +178,52 @@ public class Application {
 				
 			//4-calcul des recettes sur une pÃ©riode
 			case 4:
+				String dateDebutPeriode;
+				String dateFinPeriode;
+				do {
+				System.out.println("Tapez la date de début de la période au format jj/mm/aaaa");
+				dateDebutPeriode = sc.nextLine();
+				}while(!dateDebutPeriode.matches("^\\d{2}/\\d{2}/\\d{4}$"));
+				String[] dateDebutPeriodeTab = dateDebutPeriode.split("/");
+				GregorianCalendar dateDebutPeriodeG = new GregorianCalendar(Integer.parseInt(dateDebutPeriodeTab[2]), 
+																			Integer.parseInt(dateDebutPeriodeTab[1]), 
+																			Integer.parseInt(dateDebutPeriodeTab[0]));
+				do {
+				System.out.println("Tapez la date de fin de la période au format jj/mm/aaaa");
+				dateFinPeriode = sc.nextLine();
+				}while(!dateFinPeriode.matches("^\\d{2}/\\d{2}/\\d{4}$"));
+				String[] dateFinPeriodeTab = dateFinPeriode.split("/");
+				GregorianCalendar dateFinPeriodeG = new GregorianCalendar(Integer.parseInt(dateFinPeriodeTab[2]), 
+																		  Integer.parseInt(dateFinPeriodeTab[1]), 
+																		  Integer.parseInt(dateFinPeriodeTab[0]));
+				int benefice = 0;
+				for(Location location : locations) {
+					if(location.isWithinRange(dateDebutPeriodeG, dateFinPeriodeG)) {
+						benefice += location.getDuree() * location.getPrixJour();
+					}
+				}
+				System.out.println("Le chiffre réalisé sur la période du " + dateDebutPeriode + " au " + 
+								   dateFinPeriode + " est de " + benefice + "€");
 				break;
+				
+			//5-restitution d'une location
 			case 5:
+				System.out.println("Veuillez sélectionner une location parmi la liste : ");
+				int index1 = 1;
+				for(Location l : locations){
+					String dateFin = String.valueOf(l.getDate_debut().get(Calendar.DAY_OF_MONTH))+"/"+
+									 String.valueOf(l.getDate_debut().get(Calendar.MONTH))+"/"+
+									 String.valueOf(l.getDate_debut().get(Calendar.YEAR));
+					String leClient = l.getClient().getNom() + " " + l.getClient().getPrenom();
+					System.out.println(index1+" "+ "Location du " + dateFin +" "+ leClient);
+					index1++;
+				}
+				int choixLocation = selectInt(locations.size());
+				Location laLocation = locations.get(choixLocation-1);
+				laLocation.restituer();
+				locations.remove(laLocation);
+				break;
+			case 6:
 				continuer = false;
 				break;
 			}

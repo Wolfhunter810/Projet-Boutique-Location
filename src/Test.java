@@ -1,6 +1,6 @@
 /*
  * Mini-projet : Boutique de location
- * Auteurs: Aurélio Hardy, Arthur Baron, Yoann Auffredo
+ * Auteurs: AurÃ©lio Hardy, Arthur Baron, Yoann Auffredo
  */
 
 import java.util.List;
@@ -10,13 +10,13 @@ import articles.*;
 
 public class Test {
 	/**
-	 * Test les différents modes de tri
+	 * Test les diffÃ©rents modes de tri
 	 */
 	public static void testArticlesTri(){
 		List<Article> lstArticles = Application.articles;
 		List<Article> lstArticleTrie = Application.tri("reference");
 		System.out.println("============================");
-		System.out.println("Tri par référence");
+		System.out.println("Tri par rÃ©fÃ©rence");
 		System.out.println("============================");
 		for(Article a : lstArticleTrie){
 			System.out.println(a.getReference());
@@ -57,5 +57,14 @@ public class Test {
 			System.out.println(l.toString());
 		}
 		
+	}
+	
+	/**
+	 * Test la création et l'édition du fichier relatif aux restitutions de locations
+	 */
+	public static void testRestitution() {
+		List<Location>listLocations = Application.locations;
+		Location uneLocation = listLocations.get(2);
+		uneLocation.restituer();
 	}
 }

@@ -28,7 +28,7 @@ public class Location {
 		this.articles = new ArrayList<Article>();
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
-		this.prixJour = 0;
+		this.prixJour = 10;
 	}
 	
 	/**
@@ -65,7 +65,7 @@ public class Location {
 		try {
 		String anneeFin = String.valueOf(this.getDate_fin().get(Calendar.YEAR));
 		String moisFin = String.valueOf(this.getDate_fin().get(Calendar.MONTH));
-		File file = new File("files/"+anneeFin+moisFin+".loc.txt");
+		File file = new File("files/"+anneeFin+"_"+moisFin+".loc.txt");
 		if(!file.exists()) {
 			file.createNewFile();
 		}
@@ -73,11 +73,13 @@ public class Location {
 		BufferedWriter bw = new BufferedWriter(fw);
 		bw.write("Client : "+this.getClient().getNom()+" "+this.getClient().getPrenom());
 		bw.flush();
-		bw.write("Restitution : "+String.valueOf(this.getDate_fin().get(Calendar.DAY_OF_MONTH))+"/"+String.valueOf(this.getDate_fin().get(Calendar.MONTH))+"/"+String.valueOf(this.getDate_fin().get(Calendar.YEAR)));
+		bw.write("\nRestitution : "+String.valueOf(this.getDate_fin().get(Calendar.DAY_OF_MONTH))+"/"+String.valueOf(this.getDate_fin().get(Calendar.MONTH))+"/"+String.valueOf(this.getDate_fin().get(Calendar.YEAR)));
 		bw.flush();
+		bw.write("\nContenant :");
 		for(Article art : this.getArticles()) {
-			bw.write(art.getClass().toString()+" "+art.getReference());
+			bw.write("\n	-" + art.getClass().getSimpleName() +" "+ art.getReference());
 		}
+		bw.close();
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -137,5 +139,13 @@ public class Location {
 				this.date_fin.get(GregorianCalendar.MONTH) + "/" + 
 				this.date_fin.get(GregorianCalendar.YEAR)+
 				" pour un montant de "+this.prixJour);
+	}
+	
+	public boolean isWithinRange(GregorianCalendar dateDebut, GregorianCalendar dateFin) {
+		return (this.date_debut.before(dateFin) && this.date_debut.after(dateDebut));
+	}
+	
+	public int getDuree() {
+		return (this.date_fin.get(Calendar.DAY_OF_YEAR) - this.date_debut.get(Calendar.DAY_OF_YEAR));
 	}
 }
