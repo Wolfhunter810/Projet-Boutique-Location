@@ -131,15 +131,17 @@ public class Application {
 					
 					System.out.println(ref);
 					for(Article a: articles){
-						//System.out.println(a.getReference());
 						
 						if(a.getReference().equals(ref))
 							art = a;
-						//System.out.println(art);
 					}
 					if(art != null){
-						loc.ajouterArticle(art);
-						System.out.println("article ajouté");
+						boolean artAjoute = loc.ajouterArticle(art);
+						if(!artAjoute){
+							System.out.println("article non ajouté, stock non disponible");
+						} else {
+							System.out.println("article ajouté");
+						}
 					} else
 						System.out.println("la référence saisie n'existe pas");
 					

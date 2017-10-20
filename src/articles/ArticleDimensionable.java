@@ -33,64 +33,64 @@ public abstract class ArticleDimensionable extends Article {
 	}
 	
 	/**
-	 * get the hight
-	 * @return hight in cm
+	 * get la hauteur
+	 * @return hauteur en cm
 	 */
 	public double getHauteur() {
 		return hauteur;
 	}
 	
 	/**
-	 * set the hight
-	 * @param hauteur in cm
+	 * set la hauteur
+	 * @param hauteur en cm
 	 */
 	public void setHauteur(double hauteur) {
 		this.hauteur = hauteur;
 	}
 	
 	/**
-	 * get the width
-	 * @return width in cm
+	 * get la largeur
+	 * @return largeur en cm
 	 */
 	public double getLargeur() {
 		return largeur;
 	}
 	
 	/**
-	 * set the width
-	 * @param largeur in cm
+	 * set la largeur
+	 * @param largeur en cm
 	 */
 	public void setLargeur(double largeur) {
 		this.largeur = largeur;
 	}
 	
 	/**
-	 * get the length
-	 * @return the length in cm
+	 * get la longueur
+	 * @return la longueur en cm
 	 */
 	public double getLongueur() {
 		return longueur;
 	}
 	
 	/**
-	 * set the length
-	 * @param longueur in cm
+	 * set la longueur
+	 * @param longueur en cm
 	 */
 	public void setLongueur(double longueur) {
 		this.longueur = longueur;
 	}
 
 	/**
-	 * get the maximum weight
-	 * @return the maximum weight
+	 * get le poids maximum
+	 * @return le poids maximum
 	 */
 	public double getPoidsMax() {
 		return poidsMax;
 	}
 
 	/**
-	 * set the maximum weight in kg
-	 * @param poidsMax
+	 * set le poids maximum
+	 * @param le poids maximum en kg
 	 */
 	public void setPoidsMax(double poidsMax) {
 		this.poidsMax = poidsMax;

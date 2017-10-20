@@ -35,32 +35,32 @@ public class FauteuilRoulant extends Article {
 	}
 
 	/**
-	 * get the width
-	 * @return width
+	 * get la largeur
+	 * @return largeur
 	 */
 	public double getLargeur() {
 		return largeur;
 	}
 
 	/**
-	 * set the width
-	 * @param width
+	 * set la largeur
+	 * @param largeur
 	 */
 	public void setLargeur(double largeur) {
 		this.largeur = largeur;
 	}
 
 	/**
-	 * get the weight
-	 * @return weight
+	 * get le poids
+	 * @return poids
 	 */
 	public double getPoids() {
 		return poids;
 	}
 
 	/**
-	 * set the weight
-	 * @param weight
+	 * set le poids
+	 * @param poids
 	 */
 	public void setPoids(double poids) {
 		this.poids = poids;

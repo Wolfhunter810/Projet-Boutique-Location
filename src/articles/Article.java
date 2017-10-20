@@ -30,80 +30,80 @@ public abstract class Article {
 	}
 	
 	/**
-	 * get the reference
-	 * @return the reference
+	 * get la reference
+	 * @return la reference
 	 */
 	public String getReference() {
 		return reference;
 	}
 	
 	/**
-	 * set the reference
-	 * @param reference
+	 * set la reference
+	 * @param la reference
 	 */
 	public void setReference(String reference) {
 		this.reference = reference;
 	}
 	
 	/**
-	 * get the marque
-	 * @return the marque
+	 * get la marque
+	 * @return la marque
 	 */
 	public String getMarque() {
 		return marque;
 	}
 	
 	/**
-	 * set the marque
-	 * @param marque
+	 * set la marque
+	 * @param la marque
 	 */
 	public void setMarque(String marque) {
 		this.marque = marque;
 	}
 	
 	/**
-	 * get the modele
-	 * @return the modele
+	 * get le modele
+	 * @return le modele
 	 */
 	public String getModele() {
 		return modele;
 	}
 	
 	/**
-	 * set the modele
-	 * @param modele
+	 * set le modele
+	 * @param le modele
 	 */
 	public void setModele(String modele) {
 		this.modele = modele;
 	}
 	
 	/**
-	 * get the location price
-	 * @return the location price in Euro
+	 * get le prix de location
+	 * @return le prix de location en euro
 	 */
 	public double getPrixLocation() {
 		return prixLocation;
 	}
 	
 	/**
-	 * set the location price
-	 * @param prixLocation in Euro
+	 * set le prix de location
+	 * @param le prix de location Euro
 	 */
 	public void setPrixLocation(double prixLocation) {
 		this.prixLocation = prixLocation;
 	}
 	
 	/**
-	 * get the stock
-	 * @return stock
+	 * get le stock
+	 * @return le stock
 	 */
 	public int getNbStock() {
 		return nbStock;
 	}
 	
 	/**
-	 * set the stock
-	 * @param nbStock
+	 * set le stock
+	 * @param le Stock
 	 */
 	public void setNbStock(int nbStock) {
 		this.nbStock = nbStock;

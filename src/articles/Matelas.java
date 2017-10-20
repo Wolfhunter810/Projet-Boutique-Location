@@ -28,15 +28,15 @@ public class Matelas extends ArticleDimensionable{
 	}
 	
 	/**
-	 * get the inflation time
-	 * @return the inflation time
+	 * get le temps de gonflage
+	 * @return le temps de gonflage
 	 */
 	public double getTempsGonflage() {
 		return tempsGonflage;
 	}
 	
 	/**
-	 * set the inflation time
+	 * set le temps de gonflage
 	 * @param tempsGonflage
 	 */
 	public void setTempsGonflage(double tempsGonflage) {
