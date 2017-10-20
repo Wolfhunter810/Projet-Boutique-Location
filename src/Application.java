@@ -28,12 +28,12 @@ public class Application {
 		
 		while(continuer){
 	
-			System.out.println("Bienvenue sur l'application de la société Aurélio Inc.");
-			System.out.println("Choisissez une action à effectuer");
+			System.out.println("Bienvenue sur l'application de la sociï¿½tï¿½ AurÃ©lio-Yoann-Arthur Inc.");
+			System.out.println("Choisissez une action ï¿½ effectuer");
 			System.out.println("1-afficher la liste des articles");
-			System.out.println("2-créer une commande");
+			System.out.println("2-crï¿½er une commande");
 			System.out.println("3-afficher les locations en cours");
-			System.out.println("4-calcul des recettes sur une période");
+			System.out.println("4-calcul des recettes sur une pï¿½riode");
 			System.out.println("5-restituer une location");
 			System.out.println("6- ***exit***");
 			System.out.println("----------------------------------------");
@@ -158,7 +158,7 @@ public class Application {
 				
 			//3-afficher les locations en cours
 			case 3:
-				System.out.println("Veuillez sélectionner un client parmi la liste : ");
+				System.out.println("Veuillez sï¿½lectionner un client parmi la liste : ");
 				int index = 1;
 				for(Client c : clients){
 					System.out.println(index+"["+c.getPrenom()+" "+c.getNom()+"]");
@@ -183,7 +183,7 @@ public class Application {
 				String dateDebutPeriode;
 				String dateFinPeriode;
 				do {
-				System.out.println("Tapez la date de début de la période au format jj/mm/aaaa");
+				System.out.println("Tapez la date de dï¿½but de la pï¿½riode au format jj/mm/aaaa");
 				dateDebutPeriode = sc.nextLine();
 				}while(!dateDebutPeriode.matches("^\\d{2}/\\d{2}/\\d{4}$"));
 				String[] dateDebutPeriodeTab = dateDebutPeriode.split("/");
@@ -191,7 +191,7 @@ public class Application {
 																			Integer.parseInt(dateDebutPeriodeTab[1]), 
 																			Integer.parseInt(dateDebutPeriodeTab[0]));
 				do {
-				System.out.println("Tapez la date de fin de la période au format jj/mm/aaaa");
+				System.out.println("Tapez la date de fin de la pï¿½riode au format jj/mm/aaaa");
 				dateFinPeriode = sc.nextLine();
 				}while(!dateFinPeriode.matches("^\\d{2}/\\d{2}/\\d{4}$"));
 				String[] dateFinPeriodeTab = dateFinPeriode.split("/");
@@ -204,13 +204,13 @@ public class Application {
 						benefice += location.getDuree() * location.getPrixJour();
 					}
 				}
-				System.out.println("Le chiffre réalisé sur la période du " + dateDebutPeriode + " au " + 
-								   dateFinPeriode + " est de " + benefice + "€");
+				System.out.println("Le chiffre rï¿½alisï¿½ sur la pï¿½riode du " + dateDebutPeriode + " au " + 
+								   dateFinPeriode + " est de " + benefice + "ï¿½");
 				break;
 				
 			//5-restitution d'une location
 			case 5:
-				System.out.println("Veuillez sélectionner une location parmi la liste : ");
+				System.out.println("Veuillez sï¿½lectionner une location parmi la liste : ");
 				int index1 = 1;
 				for(Location l : locations){
 					String dateFin = String.valueOf(l.getDate_debut().get(Calendar.DAY_OF_MONTH))+"/"+
